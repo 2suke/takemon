@@ -3,13 +3,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def index
+    @users = User.all
+  end
+
   def new
     @user = User.new
   end
 
   def create
     @user = User.new(user_params)
-    if @user.save!
+    if @user.save
       flash[:success] = 'ユーザーを登録しました。確認メールを送付したので、アカウントを有効化してください。'
       redirect_to 
     else
