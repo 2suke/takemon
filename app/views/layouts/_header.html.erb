@@ -8,9 +8,10 @@
 
   <div id="nav-drawer">
     <label id="nav-icon"></label>
-    <% if loged_in? %>
+    <% if logged_in? %>
       <nav>
         <li><%= link_to  "マイページ", current_user %></li>
+        <li><%= link_to  "マイページ2", edit_user_path(current_user) %></li>
         <li><%= link_to  "ユーザーを探す", '#' %></li>
         <li>Message</li>
         <li><%= link_to  "ログアウト", login_path, method: :delete %></li>

@@ -1,4 +1,4 @@
-<h1>ユーザー登録</h1>
+<h1>アカウント情報編集</h1>
 
 <%= form_for(@user) do |f| %>
 
@@ -12,6 +12,7 @@
 	<%= f.password_field :password %>
 	<%= f.label :password_confirmation, "パスワード（再入力）" %>
 	<%= f.password_field :password_confirmation, class: 'form-control' %>
-	<%= f.submit 'アカウント作成' %>
+
+	<%= f.submit 'アカウント情報更新' %>
 
 <% end %>
