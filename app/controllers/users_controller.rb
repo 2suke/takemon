@@ -26,14 +26,15 @@ class UsersController < ApplicationController
   end
 
   def edit
+    store_location
     @user = User.find_by(params[:id])
   end
 
   def update
     if @user.update_attributes(user_params)
       flash[:success] = 'アカウント情報を更新しました。'
-      redirect_to @user
-      # redirect_back_or
+      # redirect_to @user
+      redirect_back_or
     else
       render 'edit'
     end
@@ -48,7 +49,8 @@ class UsersController < ApplicationController
 
   def logged_in_user
     unless logged_in?
-      flash[:danger] = 'ログインしてください。'
+      store_location
+      flash[:danger] = login_link + 'ログインしてください。'
       redirect_to root_url
     end
   end

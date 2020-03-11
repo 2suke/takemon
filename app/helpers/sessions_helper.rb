@@ -4,7 +4,6 @@ module SessionsHelper
   end
 
   def logged_in?
-    store_location
     !current_user.nil?
   end
 
