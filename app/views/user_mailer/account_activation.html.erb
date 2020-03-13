@@ -1,0 +1,12 @@
+User#account_activation
+
+<%= @user.name %> 様<br>
+<%= render  'user_mailer/shared/header' %>
+
+ポートフォリオ公開サイト <%= link_to 'takemon', '#' %>のアカウントの作成が完了しました。<br>
+以下のリンクからtakemonにアクセスし、アカウントを有効化してください。
+
+<%= link_to 'アカウントを有効化する。', 
+            edit_account_activation_url(@user.activation_token, email: @user.email) %>
+
+<%= render  'user_mailer/shared/footer' %>
