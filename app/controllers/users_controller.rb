@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       log_in @user
       @user.send_activation_email
       flash[:success] = 'ユーザーを登録しました。確認メールを送付したので、アカウントを有効化してください。'
-      redirect_to @user
+      redirect_to root_url
     else
       render 'new'
     end
