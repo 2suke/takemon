@@ -1,0 +1,13 @@
+<%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
+<%= render 'shared/error_messages' %>
+
+<%= hidden_field_tag :email, @user.email %>
+
+<%= f.label :password, '新規パスワード' %>
+<%= f.password_field :password %>
+
+<%= f.label :password_confirmation, '新規パスワード(再入力)' %>
+<%= f.password_field :password_confirmation %>
+
+<%= f.submit '新規パスワードを登録する。' %>
+<% end %>
