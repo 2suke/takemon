@@ -6,16 +6,34 @@
   box-sizing:         border-box;
 }
 
-header {
-  background-color: #000000;
-  color: #ffffff;
+.field_with_errors {
+  input {
+    @extend .is-invalid;
+  }
 }
 
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
-  @include box_sizing;
+body {
+  min-height: 100vh;
+}
+
+header {
+  background-color: #202020;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+footer {
+  background-color: #b0b0b0;
+  color: #000000;
+}
+
+form{
+  input, textarea, select, .uneditable-input {
+    border: 1px solid #b0b0b0;
+    width: 100%;
+    margin-bottom: 20px;
+    @include box_sizing;
+  }
 }
 
 input {
