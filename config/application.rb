@@ -20,6 +20,8 @@ module Takemon
     # the framework and any gems in your application.
 
     config.generators do |g|
+      g.factory_bot false
+      g.factory_bot dir: 'custom/dir/for/factories'
       g.test_framework :rspec,
                        fixtures: false,
                        view_specs: false,
