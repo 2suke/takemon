@@ -44,4 +44,18 @@ FactoryBot.define do
     email
     password { 'a' * 17 }
   end
+
+  factory :active_user, class: User do
+    name { 'michael' }
+    email
+    password { 'password' }
+    activated { 'true' }
+  end
+
+  factory :inactive_user, class: User do
+    name { 'michael' }
+    email
+    password { 'password' }
+    activated { 'false' }
+  end
 end
