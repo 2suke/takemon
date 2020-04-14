@@ -1,17 +1,22 @@
-<h1>ユーザー登録</h1>
+<div class="row">
+    <div class="col-md-8 offset-md-2">
 
-<%= form_for(@user) do |f| %>
+        <h1>ユーザー登録</h1>
 
-	<%= render 'shared/error_messages' %>
+        <%= form_with(model: @user, local: true) do |f| %>
 
-	<%= f.label :name, "ユーザ名" %>
-	<%= f.text_field :name %>
-	<%= f.label :email, "メールアドレス" %>
-	<%= f.email_field :email%>
-	<%= f.label :password, "パスワード" %>
-	<%= f.password_field :password %>
-	<%= f.label :password_confirmation, "パスワード（再入力）" %>
-	<%= f.password_field :password_confirmation, class: 'form-control' %>
-	<%= f.submit 'アカウント作成' %>
+        <%= render 'shared/error_messages' %>
 
-<% end %>
+        <%= f.label :name, "ユーザ名" %>
+        <%= f.text_field :name, class: 'form-control' %>
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, class: 'form-control' %>
+        <%= f.label :password, "パスワード" %>
+        <%= f.password_field :password, placeholder: '半角英数字６〜１６文字', class: 'form-control' %>
+        <%= f.label :password_confirmation, "パスワード（再入力）" %>
+        <%= f.password_field :password_confirmation, placeholder: 'もう一度パスワードを入力', class: 'form-control' %>
+        <%= f.submit 'アカウント作成', class:"btn btn-primary" %>
+
+        <% end %>
+    </div>
+</div>
