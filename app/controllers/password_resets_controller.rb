@@ -7,7 +7,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(:email, params[:password_reset][:email])
+    @user = User.find_by(email: params[:password_reset][:email].downcase)
     if @user
       @user.create_reset_digest
       @user.send_password_reset_email
@@ -23,14 +23,14 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    if params[:user][:email].empty?
+    if params[:user][:password].empty?
       @user.errors.add(:password, :blank)
       render 'edit'
     elsif @user.update_attributes(user_params)
       log_in @user
-      @user.update_attributes(:reset_digest, nil)
+      @user.update_attributes(reset_digest: nil)
       flash[:success] = 'パスワードの再設定が完了しました。'
-      riderect_to @user
+      redirect_to @user
     else
       render 'edit'
     end

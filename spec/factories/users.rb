@@ -1,7 +1,7 @@
 # require 'rails_helper'
 
 FactoryBot.define do
-  sequence(:email){|n| "example#{n}@sample.com"}
+  sequence(:email){ |n| "example#{n}@sample.com" }
 
   factory :valid_user, class: User do
     name { 'michael' }

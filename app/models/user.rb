@@ -25,7 +25,7 @@ class User < ApplicationRecord
   end
 
   def password_reset_expired?
-    reset_sent_at < 2.hours.ago?
+    reset_sent_at < 2.hours.ago
   end
 
   def remember
@@ -37,10 +37,11 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
-  private
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
 
-  def downcase_email
-    self.email = email.downcase
+    BCrypt::Password.new(digest).is_password?(token)
   end
 
   def create_activation_digest
@@ -54,10 +55,10 @@ class User < ApplicationRecord
     update_attribute(:reset_sent_at, Time.zone.now)
   end
 
-  def authenticated?(remember_token)
-    return false if remember_digest.nil?
+  private
 
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  def downcase_email
+    self.email = email.downcase
   end
 
   class << self
