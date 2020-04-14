@@ -4,7 +4,7 @@
         <%= form_for(:password_reset , url: password_resets_path) do |f| %>
         <%= f.label :email, 'メールアドレス' %>
         <%= f.email_field :email%>
-        <%= f.submit 'パスワード再設定用メールを受け取る' class: 'btn btn-primary'%>
+        <%= f.submit 'パスワード再設定用メールを受け取る', class: 'btn btn-primary' %>
         <% end %>
     </div>
 </div>

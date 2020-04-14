@@ -4,7 +4,7 @@ class UserMailer < ApplicationMailer
     mail to: @user.email, subject: '【takemon】アカウントを有効化しましょう'
   end
 
-  def reset_password(user)
+  def password_reset(user)
     @user = user
     mail to: @user.email, subject: '【takemon】パスワードをリセットします'
   end
