@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: %i[edit update]
+  before_action :logged_in_user, only: %i[index edit update]
   before_action :correct_user,   only: %i[edit update]
 
   def show
@@ -41,6 +41,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = 'ユーザーを削除しました。'
+    redirect_to users_url
+  end
+
   private
 
   def user_params
@@ -51,7 +57,7 @@ class UsersController < ApplicationController
   def logged_in_user
     unless logged_in?
       store_location
-      flash[:danger] = login_link + 'ログインしてください。'
+      flash[:danger] = 'ログインしてください。'
       redirect_to root_url
     end
   end
