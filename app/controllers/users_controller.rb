@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @portfolio = @user.portfolio.all
+    @portfolio = @user.portfolios.all
   end
 
   def index

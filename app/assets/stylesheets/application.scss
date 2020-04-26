@@ -20,6 +20,13 @@ header {
   background-color: #202020;
   color: #ffffff;
   margin-bottom: 20px;
+  ul{
+    display: inline;
+    li {
+      display: inline-block;
+      margin-right: 20px;
+    }
+  }
 }
 
 footer {
@@ -27,15 +34,17 @@ footer {
   color: #000000;
 }
 
-form{
-  input, textarea, select, .uneditable-input {
-    border: 1px solid #b0b0b0;
-    width: 100%;
-    margin-bottom: 20px;
-    @include box_sizing;
+.content{
+  form{
+    input, textarea, select, .uneditable-input {
+      border: 1px solid #b0b0b0;
+      width: 100%;
+      margin-bottom: 20px;
+      @include box_sizing;
+    }
   }
-}
 
-input {
-  height: auto !important;
+  input {
+    height: auto !important;
+  }
 }

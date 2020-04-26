@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+
+        <h1>作品投稿</h1>
+
+        <%= form_with(model: @portfolio, local: true) do |f| %>
+
+        <%= render 'shared/error_messages', object: @portfolio %>
+
+        <%= f.label :title, "作品名" %>
+        <%= f.text_field :title, class: 'form-control' %>
+        <%= f.label :detail, "作品について" %>
+        <%= f.text_field :detail, class: 'form-control' %>
+        <%= f.submit '作品を投稿する', class:"btn btn-primary" %>
+
+        <% end %>
+    </div>
+</div>
