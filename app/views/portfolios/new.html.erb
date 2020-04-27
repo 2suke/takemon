@@ -3,15 +3,23 @@
 
         <h1>作品投稿</h1>
 
-        <%= form_with(model: @portfolio, local: true) do |f| %>
+        <%= form_with(model: @portfolio, local: true) do |p| %>
 
-        <%= render 'shared/error_messages', object: @portfolio %>
+            <%= render 'shared/error_messages', object: @portfolio %>
 
-        <%= f.label :title, "作品名" %>
-        <%= f.text_field :title, class: 'form-control' %>
-        <%= f.label :detail, "作品について" %>
-        <%= f.text_field :detail, class: 'form-control' %>
-        <%= f.submit '作品を投稿する', class:"btn btn-primary" %>
+            <%= p.label :title, "作品名" %>
+            <%= p.text_field :title, class: 'form-control' %>
+            <%= p.label :detail, "作品について" %>
+            <%= p.text_field :detail, class: 'form-control' %>
+
+            <%= p.fields_for :images do |i| %>
+                <%= i.label :description, '注釈文' %>
+                <%= i.text_field :description, class: 'form-control', placeholder: '30字まで（入力は任意）' %>
+                <%= i.label :image, '画像' %>
+                <%= i.file_field :image, class: 'form-control' %>
+            <% end %>
+
+            <%= p.submit '作品を投稿する', class:"btn btn-primary" %>
 
         <% end %>
     </div>

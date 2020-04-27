@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_16_011434) do
+ActiveRecord::Schema.define(version: 2020_04_26_215710) do
+
+  create_table "images", force: :cascade do |t|
+    t.string "description"
+    t.string "image"
+    t.integer "portfolio_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["portfolio_id"], name: "index_images_on_portfolio_id"
+  end
 
   create_table "portfolios", force: :cascade do |t|
     t.string "title"
@@ -37,5 +46,6 @@ ActiveRecord::Schema.define(version: 2020_04_16_011434) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "images", "portfolios"
   add_foreign_key "portfolios", "users"
 end
