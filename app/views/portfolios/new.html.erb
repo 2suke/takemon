@@ -12,15 +12,54 @@
             <%= p.label :detail, "作品について" %>
             <%= p.text_field :detail, class: 'form-control' %>
 
+            <% slide_counter = 1 %>
             <%= p.fields_for :images do |i| %>
-                <%= i.label :description, '注釈文' %>
-                <%= i.text_field :description, class: 'form-control', placeholder: '30字まで（入力は任意）' %>
-                <%= i.label :image, '画像' %>
-                <%= i.file_field :image, class: 'form-control' %>
+                <div class='card images_form' style='display: none;'>
+                    <div class='card-header'>
+                        <%= slide_counter %>枚目のスライド
+                    </div>
+                    <div class='card-body'>
+                        <%= i.label :image, '画像' %>
+                        <%= i.file_field :image, class: 'form-control' %>
+                        <%= i.label :description, '注釈文' %>
+                        <%= i.text_field :description, class: 'form-control', placeholder: '30字まで（入力は任意）' %>
+                    </div>
+                    <div class="card-footer">
+                        <button type='button' class='btn btn-secondary btn-sm float-right image_close'>キャンセル</button>
+                    </div>
+                    <div class='clearfix'></div>
+                </div>
+                <% slide_counter += 1 %>
             <% end %>
 
-            <%= p.submit '作品を投稿する', class:"btn btn-primary" %>
+            <button type='button' class='btn btn-primary col-md-4 float-right image_apend'>スライドを追加する</button>
+
+            <%= p.submit '作品を投稿する', id: 'portfolio_submit', class:"btn btn-primary" %>
 
         <% end %>
     </div>
+    <script type='text/javascript'>
+        ($('.image_apend').on('click', add_image_form));
+
+        // imageモデル入力フォームを追加する処理
+        function add_image_form(){
+            $('.images_form').each( function(){
+                if($(this).css('display')=='none'){
+                    $(this).show();
+                    $(this).find('.image_close').on('click', close_image_form);
+                    return false;
+                }
+            });
+        }
+
+        // imageモデル入力フォームを閉じる（入力値を削除してから非表示にする）処理
+        function close_image_form(){
+            let current_form = $(this).closest('.images_form');
+            current_form.children('input').each(function(){
+                console.log(('in the loop'))
+                $(this).val('');
+            });
+            current_form.hide();
+        }
+    </script>
 </div>

@@ -16,7 +16,7 @@ class PortfoliosController < ApplicationController
 
   def create
     @portfolio = current_user.portfolios.build(portfolio_param)
-    if @portfolio.save!
+    if @portfolio.save
       flash[:success] = '作品を投稿しました。'
       redirect_to current_user
     else
@@ -40,6 +40,6 @@ class PortfoliosController < ApplicationController
 
   def portfolio_param
     params.require(:portfolio).permit(:title, :detail,
-                                      images_attributes: [:description, :image] )
+                                      images_attributes: %i[description image])
   end
 end
