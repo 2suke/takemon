@@ -10,14 +10,11 @@
             <%= p.label :title, "作品名" %>
             <%= p.text_field :title, class: 'form-control' %>
             <%= p.label :detail, "作品について" %>
-            <%= p.text_field :detail, class: 'form-control' %>
+            <%= p.text_area :detail, class: 'form-control', rows: 10 %>
 
-            <% slide_counter = 1 %>
+            <% slide_index = 1 %>
             <%= p.fields_for :images do |i| %>
-                <div class='card images_form' style='display: none;'>
-                    <div class='card-header'>
-                        <%= slide_counter %>枚目のスライド
-                    </div>
+                <div id='slide-<%=slide_index%>' class='card images_form' style='display: none;'>
                     <div class='card-body'>
                         <%= i.label :image, '画像' %>
                         <%= i.file_field :image, class: 'form-control' %>
@@ -25,41 +22,41 @@
                         <%= i.text_field :description, class: 'form-control', placeholder: '30字まで（入力は任意）' %>
                     </div>
                     <div class="card-footer">
-                        <button type='button' class='btn btn-secondary btn-sm float-right image_close'>キャンセル</button>
+                        <button type='button' class='btn btn-secondary btn-sm float-right image_close' onclick='close_image_form();'>キャンセル</button>
                     </div>
                     <div class='clearfix'></div>
                 </div>
-                <% slide_counter += 1 %>
+                <% slide_index += 1 %>
             <% end %>
 
-            <button type='button' class='btn btn-primary col-md-4 float-right image_apend'>スライドを追加する</button>
+            <button type='button' id='append-btn' class='btn btn-primary col-md-4 float-right image_append'>スライドを追加する</button>
 
             <%= p.submit '作品を投稿する', id: 'portfolio_submit', class:"btn btn-primary" %>
 
         <% end %>
     </div>
     <script type='text/javascript'>
-        ($('.image_apend').on('click', add_image_form));
+        ($('.image_append').on('click', addImageForm));
 
         // imageモデル入力フォームを追加する処理
-        function add_image_form(){
+        function addImageForm(){
             $('.images_form').each( function(){
                 if($(this).css('display')=='none'){
                     $(this).show();
-                    $(this).find('.image_close').on('click', close_image_form);
+                    $(this).find('.image_close').on('click', closeImageForm);
                     return false;
                 }
             });
         }
 
         // imageモデル入力フォームを閉じる（入力値を削除してから非表示にする）処理
-        function close_image_form(){
+        function closeImageForm(){
             let current_form = $(this).closest('.images_form');
-            current_form.children('input').each(function(){
-                console.log(('in the loop'))
+            current_form.find('input').each(function(){
                 $(this).val('');
             });
             current_form.hide();
+            current_form.insertBefore('#append-btn');
         }
     </script>
 </div>
