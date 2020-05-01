@@ -1,11 +1,2 @@
 <h1>StaticPage#home</h1>
-<ul>
-    <% @portfolios.each do |portfolio| %>
-    <li>
-        <p>title: <%= portfolio.title %></p>
-        <div>
-            <h3>detail</h3>
-            <p><%= portfolio.detail %></p>
-    </li>
-    <% end %>
-</ul>
+<%= render  'shared/portfolio_list' %>

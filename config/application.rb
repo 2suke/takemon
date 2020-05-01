@@ -11,6 +11,9 @@ module Takemon
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
+    # setting time zone
+    config.time_zone = 'Tokyo'
+
     # Error messages in Japanese
     config.i18n.default_locale = :ja
 

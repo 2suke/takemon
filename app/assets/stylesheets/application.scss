@@ -68,4 +68,18 @@ footer {
   input {
     height: auto !important;
   }
+
+  ul {
+    list-style: none;
+    li {
+      float: left;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.card {
+  img {
+    max-height: 30%;
+  }
 }
