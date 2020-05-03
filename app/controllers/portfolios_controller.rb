@@ -1,6 +1,6 @@
 class PortfoliosController < ApplicationController
   def show
-
+    @portfolio = Portfolio.find(params[:id])
   end
 
   def Index
@@ -15,7 +15,8 @@ class PortfoliosController < ApplicationController
   end
 
   def create
-    @portfolio = current_user.portfolios.build(portfolio_param)
+    @portfolio = current_user.portfolios.build(portfolio_params)
+    @portfolio.images.order(:image)
     if @portfolio.save
       flash[:success] = '作品を投稿しました。'
       redirect_to current_user
@@ -38,7 +39,7 @@ class PortfoliosController < ApplicationController
 
   private
 
-  def portfolio_param
+  def portfolio_params
     params.require(:portfolio).permit(:title, :detail,
                                       images_attributes: %i[description image])
   end

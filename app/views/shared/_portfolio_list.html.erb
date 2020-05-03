@@ -14,7 +14,7 @@
             <small class="card-text text-muted"><%= portfolio.created_at.to_s(:date_jp) %>に投稿</small><br>
             <small class="card-text text-muted"><%= portfolio.updated_at.to_s(:date_jp) %>に最終更新</small>
           </div>
-          <a href="#" class="btn btn-primary btn-sm float-right">詳細を見る</a>
+          <%= link_to "詳細を見る", portfolio_path(portfolio), class: 'btn btn-primary btn-sm float-right' %>
         </div>
       </div>
     </li>
