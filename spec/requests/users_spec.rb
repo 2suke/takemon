@@ -2,19 +2,12 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   let(:saved_user) { create(:valid_user) }
-  let(:unsaved_user) { create(:nameless_user) }
+  # let(:unsaved_user) { create(:nameless_user) }
 
   describe 'GET#show' do
     it 'assigns valid_user' do
       get :show, params: { id: saved_user }
       expect(assigns(:user)).to eq saved_user
-    end
-  end
-
-  describe 'GET#index' do
-    it 'returns status code 200' do
-      get :index
-      expect(response).to have_http_status(:ok)
     end
   end
 
@@ -34,7 +27,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe 'POST#create' do
     context 'if valid_user posted' do
-      it 'add a user count' do
+      it 'increment user count' do
         expect do
           post :create, params: { user: FactoryBot.attributes_for(:valid_user) }
         end.to change(User, :count).by(1)
@@ -53,6 +46,15 @@ RSpec.describe UsersController, type: :controller do
                params: { user: FactoryBot.attributes_for(:nameless_user) }
         end.to change(User, :count).by(0)
       end
+    end
+  end
+
+  describe 'DELETE#destroy' do
+    it 'decrement user count' do
+      saved_user.save
+      expect do
+        delete :destroy, params: { id: saved_user }
+      end.to change(User.all, :count).by(-1)
     end
   end
 end
