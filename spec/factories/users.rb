@@ -7,55 +7,46 @@ FactoryBot.define do
     name { 'michael' }
     email
     password { 'password' }
-  end
 
-  factory :nameless_user, class: User do
-    name { '' }
-    email
-    password { 'password' }
-  end
+    trait :nameless do
+      name { '' }
+    end
 
-  factory :long_name_user, class: User do
-    name { 'a' * 51 }
-    email
-    password { 'password' }
-  end
+    trait :long_name do
+      name { 'a' * 51 }
+    end
 
-  factory :mailless_user, class: User do
-    name { 'michael' }
-    email { '' }
-    password { 'password' }
-  end
+    trait :mailless do
+      email { '' }
+    end
 
-  factory :passwordless_user, class: User do
-    name { 'michael' }
-    email
-    password { '' }
-  end
+    trait :passwordless do
+      password { '' }
+    end
 
-  factory :short_password_user, class: User do
-    name { 'michael' }
-    email
-    password { 'a' * 5 }
-  end
+    trait :short_password do
+      password { 'a' * 5 }
+    end
 
-  factory :long_password_user, class: User do
-    name { 'michael' }
-    email
-    password { 'a' * 17 }
-  end
+    trait :long_password do
+      password { 'a' * 17 }
+    end
 
-  factory :active_user, class: User do
-    name { 'michael' }
-    email
-    password { 'password' }
-    activated { 'true' }
-  end
+    trait :active do
+      activated { 'true' }
+    end
 
-  factory :inactive_user, class: User do
-    name { 'michael' }
-    email
-    password { 'password' }
-    activated { 'false' }
+    trait :inactive do
+      activated { 'false' }
+    end
+
+    factory :nameless_user, traits: [:nameless]
+    factory :long_name_user, traits: [:long_name]
+    factory :mailless_user, traits: [:mailless]
+    factory :passwordless_user, traits: [:passwordless]
+    factory :short_password_user, traits: [:short_password]
+    factory :long_password_user, traits: [:long_password]
+    factory :active_user, traits: [:active]
+    factory :inactive_user, traits: [:inactive]
   end
 end
