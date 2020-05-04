@@ -8,10 +8,14 @@ class PortfoliosController < ApplicationController
   end
 
   def new
-    @portfolio = current_user.portfolios.build
-    10.times {
-      @image = @portfolio.images.build
-    }
+    if logged_in? then
+      @portfolio = current_user.portfolios.build
+      10.times {
+        @image = @portfolio.images.build
+      }
+    else
+      redirect_to login_url
+    end
   end
 
   def create
