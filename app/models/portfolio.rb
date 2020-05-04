@@ -3,5 +3,6 @@ class Portfolio < ApplicationRecord
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
   validates :user_id, presence: true
-  validates :detail, presence: true, length: { minimum: 1 }
+  validates :title,   presence: true, length: { maximum: 30 }
+  validates :detail,  presence: true, length: { minimum: 1 }
 end

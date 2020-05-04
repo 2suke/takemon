@@ -40,13 +40,13 @@ FactoryBot.define do
       activated { 'false' }
     end
 
-    factory :nameless_user, traits: [:nameless]
-    factory :long_name_user, traits: [:long_name]
-    factory :mailless_user, traits: [:mailless]
-    factory :passwordless_user, traits: [:passwordless]
+    factory :nameless_user,       traits: [:nameless]
+    factory :long_name_user,      traits: [:long_name]
+    factory :mailless_user,       traits: [:mailless]
+    factory :passwordless_user,   traits: [:passwordless]
     factory :short_password_user, traits: [:short_password]
-    factory :long_password_user, traits: [:long_password]
-    factory :active_user, traits: [:active]
-    factory :inactive_user, traits: [:inactive]
+    factory :long_password_user,  traits: [:long_password]
+    factory :active_user,         traits: [:active]
+    factory :inactive_user,       traits: [:inactive]
   end
 end
