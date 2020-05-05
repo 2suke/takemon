@@ -26,11 +26,17 @@ class PortfoliosController < ApplicationController
   end
 
   def edit
-
+    @portfolio = Portfolio.find_by(params[:id])
   end
 
   def update
-    
+    @portfolio = Portfolio.find_by(params[:id])
+    if @portfolio.update_attributes(portfolio_params)
+      flash[:success] = '記事を更新しました。'
+      redirect_to @portfolio
+    else
+      render 'edit'
+    end
   end
 
   def destroy
