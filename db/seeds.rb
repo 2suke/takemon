@@ -24,5 +24,5 @@ User.create!(
 end
 
 # demo portfolio
-# users = User.order(:created_at).take(1)
-# users.each { |user| user.portfolios.create!(title: 'sample app', detail: 'demodata')}
+users = User.order(:created_at).take(1)
+users.each { |user| user.portfolios.create!(title: 'sample app', detail: 'demodata')}

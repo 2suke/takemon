@@ -1,48 +1,22 @@
 <h1>ポートフォリオ詳細</h1>
-<div id="portdolioSlider" class="carousel slide">
-  <!-- スライドさせる画像の設定 -->
-  <% slideCount = 0 %>
-  <div class="carousel-inner">
-    <% @portfolio.images.each do |image| %>
-      <% if image.image? then %>
-        <% if slideCount == 0 then %>
-          <div class="carousel-item active">
-            <%= image_tag image.image.url, class: 'img-fluid' %>
-            <div class="carousel-caption d-none d-md-block slide-footer">
-              <p><%= image.description %></p>
-            </div>
-          </div>
-        <% else %>
-          <div class="carousel-item">
-            <%= image_tag image.image.url, class: 'img-fluid' %>
-            <div class="carousel-caption d-none d-md-block slide-footer">
-              <p><%= image.description %></p>
-            </div>
-          </div>
-        <% end %>
-        <% slideCount += 1 %>
-      <% end %>
-    <% end %>
+<div id='portdolioSlider' class='carousel slide'>
+  <%= render 'portfolios/images' %>
+</div>
+
+<div class='desc'>
+  <h3>作品について</h3>
+  <%= @portfolio.detail %>
+</div>
+
+<div class='publishing'>
+  <%= render  'portfolios/user' %>
+  <div class='float-right'>
+    <small class="text-muted"><%= @portfolio.created_at.to_s(:date_jp) %>に投稿</small><br>
+    <small class="text-muted"><%= @portfolio.updated_at.to_s(:date_jp) %>に最終更新</small>
   </div>
+  <div class='clearfix'></div>
+</div>
 
-  <!-- インジケータの設定 -->
-  <ol class="carousel-indicators">
-    <% for index in 1..slideCount do %>
-      <% if index==1 then %>
-        <li data-target="#portdolioSlider" data-slide-to='<%= index-1 %>>' class='active'></li>
-      <% else %>
-        <li data-target="#portdolioSlider" data-slide-to='<%= index-1 %>>'></li>
-      <% end %>
-    <% end %>
-  </ol>
-
-  <!-- スライドコントロールの設定 -->
-  <a class="carousel-control-prev" href="#portdolioSlider" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">前へ</span>
-  </a>
-  <a class="carousel-control-next" href="#portdolioSlider" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">次へ</span>
-  </a>
+<div class='comments'>
+  <h4>ユーザーのコメント</h4>
 </div>

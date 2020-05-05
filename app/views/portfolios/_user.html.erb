@@ -1,0 +1,5 @@
+<p><%= @portfolio.user.name %> さんの作品</p>
+<% if @portfolio.user == current_user %>
+  <%= link_to  '作品を削除する', @portfolio, method: :delete,
+                              data: { confirm: '削除した作品は復元できません。¥n本当に削除しますか？'} %>
+<% end %>

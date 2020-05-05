@@ -3,10 +3,6 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.find(params[:id])
   end
 
-  def Index
-
-  end
-
   def new
     if logged_in? then
       @portfolio = current_user.portfolios.build
@@ -38,7 +34,17 @@ class PortfoliosController < ApplicationController
   end
 
   def destroy
-
+    portfolio = Portfolio.find(params[:id])
+    if current_user == portfolio.user then
+      flash[:success] = "「#{portfolio.title}」を削除しました。"
+      portfolio.destroy
+      redirect_back_or current_user
+    else
+      log_out
+      flash[:danger] = '他のユーザーの作品を不正に削除する操作が行われました。
+                        お鐵数ですが、再度ログインしてから削除操作を実行してください。'
+      redirect_to login_url
+    end
   end
 
   private
