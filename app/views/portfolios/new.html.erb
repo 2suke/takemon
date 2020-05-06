@@ -19,40 +19,21 @@
                 <%= i.text_field :description, class: 'form-control', placeholder: '30字まで（入力は任意）' %>
             </div>
             <div class="card-footer">
-                <button type='button' class='btn btn-secondary btn-sm float-right image_close' onclick='close_image_form();'>キャンセル</button>
+                <%= button_tag 'キャンセル', type: 'button', class: 'btn btn-secondary btn-sm float-right',
+                                            onClick: "closeImageForm(#{slide_index.to_s});" %>
             </div>
             <div class='clearfix'></div>
         </div>
         <% slide_index += 1 %>
     <% end %>
 
-    <button type='button' id='append-btn' class='btn btn-primary col-md-4 float-right image_append'>スライドを追加する</button>
+    <small id='slide-alert' class='text-right', style='display: none;'><span class='text-danger text-center'>追加できるスライドは１０枚までです。</span></small>
+    <%= button_tag 'スライドを追加する', type: 'button', class: 'btn btn-primary col-md-4 float-right image_append', onClick: 'addImageForm();' %>
 
     <%= p.submit '作品を投稿する', id: 'portfolio_submit', class:"btn btn-primary" %>
 
 <% end %>
 
 <script type='text/javascript'>
-    ($('.image_append').on('click', addImageForm));
 
-    // imageモデル入力フォームを追加する処理
-    function addImageForm(){
-        $('.images_form').each( function(){
-            if($(this).css('display')=='none'){
-                $(this).show();
-                $(this).find('.image_close').on('click', closeImageForm);
-                return false;
-            }
-        });
-    }
-
-    // imageモデル入力フォームを閉じる（入力値を削除してから非表示にする）処理
-    function closeImageForm(){
-        let current_form = $(this).closest('.images_form');
-        current_form.find('input').each(function(){
-            $(this).val('');
-        });
-        current_form.hide();
-        current_form.insertBefore('#append-btn');
-    }
 </script>

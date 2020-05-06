@@ -1,0 +1,38 @@
+/**
+ * shared内のパーシャル
+ */
+@import "src/stylesheets/common";
+.field_with_errors {
+  input {
+    @extend .is-invalid;
+  }
+}
+
+.content{
+  form{
+    input, textarea, select, .uneditable-input {
+      border: 1px solid #b0b0b0;
+      width: 100%;
+      @include compornent_distance;
+      @include box_sizing;
+    }
+  }
+
+  input {
+    height: auto !important;
+  }
+
+  ul {
+    list-style: none;
+    li {
+      float: left;
+      @include compornent_distance;
+    }
+  }
+}
+
+.card {
+  img {
+    max-height: 30%;
+  }
+}
