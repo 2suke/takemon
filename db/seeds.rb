@@ -25,4 +25,11 @@ end
 
 # demo portfolio
 users = User.order(:created_at).take(1)
-users.each { |user| user.portfolios.create!(title: 'sample app', detail: 'demodata')}
+users.each do |user|
+  portfolio = user.portfolios.create!(title: 'sample app', detail: 'demodata')
+  10.times do |n|
+    demofile_path = "#{Rails.root}/db/fixtures/slide_image/number_#{n}.png"
+    portfolio.images.create!(description: 'description',
+                             image: File.open(demofile_path.to_s))
+  end
+end

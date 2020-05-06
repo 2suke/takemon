@@ -4,11 +4,11 @@ class PortfoliosController < ApplicationController
   end
 
   def new
-    if logged_in? then
+    if logged_in?
       @portfolio = current_user.portfolios.build
-      10.times {
+      10.times do
         @image = @portfolio.images.build
-      }
+      end
     else
       redirect_to login_url
     end
@@ -26,11 +26,14 @@ class PortfoliosController < ApplicationController
   end
 
   def edit
-    @portfolio = Portfolio.find_by(params[:id])
+    @portfolio = Portfolio.find(params[:id])
+    @portfolio.images.each do |image|
+      image.image.cache! unless image.image.blank?
+    end
   end
 
   def update
-    @portfolio = Portfolio.find_by(params[:id])
+    @portfolio = Portfolio.find(params[:id])
     if @portfolio.update_attributes(portfolio_params)
       flash[:success] = '記事を更新しました。'
       redirect_to @portfolio
@@ -41,7 +44,7 @@ class PortfoliosController < ApplicationController
 
   def destroy
     portfolio = Portfolio.find(params[:id])
-    if current_user == portfolio.user then
+    if current_user == portfolio.user
       flash[:success] = "「#{portfolio.title}」を削除しました。"
       portfolio.destroy
       redirect_back_or current_user
