@@ -1,4 +1,6 @@
 class PortfoliosController < ApplicationController
+  before_action :check_portfolio_owner, only: %i[edit update destroy]
+
   def show
     @portfolio = Portfolio.find(params[:id])
   end
@@ -44,16 +46,9 @@ class PortfoliosController < ApplicationController
 
   def destroy
     portfolio = Portfolio.find(params[:id])
-    if current_user == portfolio.user
-      flash[:success] = "「#{portfolio.title}」を削除しました。"
-      portfolio.destroy
-      redirect_back_or current_user
-    else
-      log_out
-      flash[:danger] = '他のユーザーの作品を不正に削除する操作が行われました。
-                        お鐵数ですが、再度ログインしてから削除操作を実行してください。'
-      redirect_to login_url
-    end
+    flash[:success] = "「#{portfolio.title}」を削除しました。"
+    portfolio.destroy
+    redirect_back_or current_user
   end
 
   private
@@ -61,5 +56,18 @@ class PortfoliosController < ApplicationController
   def portfolio_params
     params.require(:portfolio).permit(:title, :detail,
                                       images_attributes: %i[description image])
+  end
+
+  def check_portfolio_owner
+    portfolio = Portfolio.find(params[:id])
+    unless current_user == portfolio.user
+      log_out
+      store_location
+      flash[:danger] = "以下のいずれかの問題が検出されました¥n
+                        ・他のユーザーの作品を編集しようとしている¥n
+                        ・ログイン情報が失効している¥n
+                        お鐵数ですが、再度ログインしてから削除操作を実行してください。"
+      redirect_to login_url
+    end
   end
 end
