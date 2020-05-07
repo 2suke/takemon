@@ -1,0 +1,22 @@
+<h1>ポートフォリオ詳細</h1>
+<div id='portdolioSlider' class='carousel slide'>
+  <%= render 'portfolios/images' %>
+</div>
+
+<div class='desc'>
+  <h3>作品について</h3>
+  <%= simple_format(@portfolio.detail) %>
+</div>
+
+<div class='publishing'>
+  <%= render  'portfolios/user' %>
+  <div class='float-right'>
+    <small class="text-muted"><%= @portfolio.created_at.to_s(:date_jp) %>に投稿</small><br>
+    <small class="text-muted"><%= @portfolio.updated_at.to_s(:date_jp) %>に最終更新</small>
+  </div>
+  <div class='clearfix'></div>
+</div>
+
+<div class='comments'>
+  <h4>ユーザーのコメント</h4>
+</div>

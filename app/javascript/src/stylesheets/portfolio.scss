@@ -1,0 +1,40 @@
+/**
+ * portfolio#の設定
+ */
+@import "src/stylesheets/common";
+
+#portdolioSlider {
+  background-color: gray;
+}
+
+.slide-footer{
+  background-color: rgba(0,0,0,0.3);
+  bottom: 0;
+}
+
+.carousel-caption {
+  width: 100%;
+  margin-left: -15%;
+}
+
+.carousel-item {
+  height: 400px;
+  img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  }
+}
+
+.desc, .publishing, .comments {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid gray;
+}
+
+.images_form, .image_append {
+  @include compornent_distance;
+}

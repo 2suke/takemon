@@ -5,9 +5,6 @@
         <p>id: <%= user.id %></p>
         <p>name: <%= user.name %></p>
         <p>email: <%= user.email %></p>
-        <%= link_to user.name + 'のプロフィール', user %>
-        <%= link_to '削除', user, method: :delete,
-                                  data: { confirm: '削除しますか？' } %>
     </li>
     <% end %>
 </ul>

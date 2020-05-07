@@ -1,7 +1,7 @@
-<% if @user.errors.any? %>
+<% if object.errors.any? %>
 <ul class="alert alert-danger">
-    <p>入力された値に以下<%= @user.errors.count %>件の問題がありました。</p>
-    <% @user.errors.full_messages.each do |msg| %>
+    <p>入力された値に以下<%= object.errors.count %>件の問題がありました。</p>
+    <% object.errors.full_messages.each do |msg| %>
     <li><%= msg %></li>
     <% end %>
 </ul>
