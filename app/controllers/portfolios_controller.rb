@@ -2,7 +2,10 @@ class PortfoliosController < ApplicationController
   before_action :check_portfolio_owner, only: %i[edit update destroy]
 
   def show
+    store_location
     @portfolio = Portfolio.find(params[:id])
+    @comment = Comment.new
+    @comments = @portfolio.comments
   end
 
   def new

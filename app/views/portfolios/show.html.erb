@@ -19,4 +19,6 @@
 
 <div class='comments'>
   <h4>ユーザーのコメント</h4>
+  <%= render 'comment/comment_form' if logged_in? %>
+  <%= render 'comment/comment_list' %>
 </div>

@@ -1,0 +1,9 @@
+<div>
+<%= form_with(model: @comment) do |c| %>
+  <a><%= image_tag 'gray_noimage.png' %></a>
+  <%= c.text_field :message, class: 'form-control m-center col-md-9', placeholder: 'コメントへの返信(140字以内)' %>
+  <%= c.submit 'コメントする', class: 'btn btn-sm page-link text-dark d-inline-block float-right col-md-2' %>
+  <%= c.hidden_field(:to_comment, value: to_id) %>
+<% end %>
+</div>
+<div class='clearfix'></div>

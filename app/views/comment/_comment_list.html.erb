@@ -1,0 +1,4 @@
+<% @comments.each do |comment| %>
+  <%= simple_format(comment.message) %>
+  <%= render('comment/reply_form', to_comment: true, to_id: comment.id) if logged_in? %>
+<% end %>

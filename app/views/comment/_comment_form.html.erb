@@ -1,0 +1,7 @@
+<%= form_with(model: @comment) do |c| %>
+  <%= c.text_area :message, class: 'form-control m-center', placeholder: '作品へのコメント(140字以内)' %>
+  <%= c.submit 'コメントする', class: 'btn btn-sm page-link text-dark d-inline-block float-right col-md-2' %>
+  <%= c.hidden_field(:to_portfolio, value: @portfolio.id) %>
+<% end %>
+
+<div class='clearfix'></div>
