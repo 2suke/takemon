@@ -16,6 +16,11 @@
       @include compornent_distance;
       @include box_sizing;
     }
+    input.reply-form{
+      border: none;
+      border-bottom: solid 1px #505050;
+      margin-bottom: 5px;
+    }
   }
 
   input {

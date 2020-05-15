@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   delete 'login', to: 'sessions#destroy'
   resources :users
   resources :portfolios
-  resources :comments,            only: %i[show create destroy]
+  resources :comments,            only: %i[show create]
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: %i[new create edit update]
 end

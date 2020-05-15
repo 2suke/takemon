@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   def show
-    @comments = current_user.comments
+    @comment = Comment.find(params[:id])
+    @reply   = Comment.new
   end
 
   def create
@@ -19,7 +20,7 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).delete :to_portfolio
     params.require(:comment).delete :to_comment
-    return params.require(:comment).permit(:message, :to_portfolio, :to_comment)
+    return params.require(:comment).permit(:message)
   end
 
   def save_portfolio_comment
