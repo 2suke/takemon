@@ -1,0 +1,22 @@
+<div class='comment'>
+    <strong><%= link_to comment.user.name, comment.user %></strong>
+    <small class='float-right commented-at'>
+       <%= time_ago_in_words(comment.created_at)+" 前" if !comment.created_at.nil? %>
+    </small>
+    <%= simple_format(comment.message) %>
+    <ul class="icons">
+        <li class="icon">
+            <a data-toggle="collapse" href="<%= "#reply_#{comment.id.to_s}" %>" role="button" aria-expanded="false" aria-controls="collapseExample">
+          　　　<%= icon('fas','reply',class: "fa-1x fa-fw" ) %> 返信する
+            </a>
+      　</li>
+        <li class="icon">
+      　    <%= icon('fas','comments',class: "fa-1x fa-fw") %>
+            <%= link_to "#{comment.replies.count} 件のコメント", comment %>
+      　</li>
+    </ul>
+    <div class='clearfix'></div>
+    <div class="collapse" id="<%= "reply_#{comment.id.to_s}" %>">
+        <%= render('comments/reply_form', to_comment: true, to_id: comment.id) if logged_in? %>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<%= form_with(scope: :comment, url: comments_path, model: @reply) do |c| %>
+    <%= c.text_field :message, class: 'm-center reply-form', placeholder: 'コメントへの返信(140字以内)' %>
+    <%= c.submit 'コメントする', class: 'btn btn-sm page-link text-dark d-inline-block float-right col-md-2' %>
+    <a class='btn btn-light btn-sm float-right cancel-button' data-toggle="collapse" data-target="#collapseExample">キャンセル</a>
+    <%= c.hidden_field(:to_comment, value: to_id) %>
+<% end %>
+<div class='clearfix'></div>

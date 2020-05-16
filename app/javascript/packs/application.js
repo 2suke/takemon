@@ -21,3 +21,4 @@ require("packs/portfolio_form.js")
 import 'bootstrap'
 import '../src/bootstrap_conf.scss'
 import '../src/stylesheets/application.scss'
+import "@fortawesome/fontawesome-free/js/all"

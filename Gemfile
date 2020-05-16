@@ -20,9 +20,6 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.12'
 # add sample users (if you release this application as webservice, this gem belongs to develop group.)
-gem 'faker',          '1.7.3'
-
-# add sample users (if you release this application as webservice, this gem belongs to develop group.)
 gem 'faker', '1.7.3'
 
 # image uploader
@@ -71,3 +68,6 @@ gem 'jquery-rails'
 
 # Error messages in Japanese
 gem 'rails-i18n'
+
+# Use font awesome for icon
+gem 'font-awesome-sass'
