@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'noreply@takemon.com'
+  default from: 'noreply@takemon.work'
   layout 'mailer'
 end
