@@ -6,7 +6,7 @@ ruby '2.6.6'
 gem 'rails', '~> 6.0.0'
 gem 'mysql2'
 gem 'puma', '~> 3.12'
-gem 'sass-rails', '~> 5'
+gem 'sassc-rails'
 gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
@@ -46,4 +46,3 @@ end
 group :production, :staging do
   gem 'unicorn'
 end
-

@@ -19,7 +19,6 @@ WORKDIR /workdir
 ADD Gemfile /workdir/Gemfile
 ADD Gemfile.lock /workdir/Gemfile.lock
 
-RUN gem install nokogiri -- --use-system-libraries
 RUN gem update bundler
 RUN bundle -v
 RUN bundle install
