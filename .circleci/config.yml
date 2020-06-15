@@ -1,0 +1,70 @@
+version: 2
+jobs:
+  build: # Workflows を使用しない実行では、エントリポイントとして `build` ジョブが必要
+    parallelism: 3 # このジョブのインスタンスを 3つ並列実行します
+    docker:
+      - image: circleci/ruby:2.6.6-node-browser
+        environment: # プライマリコンテナの環境変数
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          BUNDLER_VERSION: 2.1.4
+          PGHOST: 127.0.0.1
+          RAILS_ENV: test
+      - image: circleci/mysql:8.0.19
+        environment:
+          MYSQL_USER: root
+          MYSQL_PASSWORD: password
+          MYSQL_DATABASE: takemon_test
+    steps:
+      - checkout
+
+      - run:
+          name: Bundlerをinstall
+          command: |
+            gem update --system
+            gem install bundler
+
+      - restore_cache:
+          keys:
+            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - rails-demo-bundle-v2-
+
+      - run:
+          name: バンドルインストール
+          command: bundle update --bundler || bundle install
+
+      - save_cache:
+          key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      - restore_cache:
+          keys:
+            - rails-demo-yarn-{{ checksum "yarn.lock" }}
+            - rails-demo-yarn-
+
+      - run:
+          name: Yarn をインストール
+          command: yarn install --cache-folder ~/.cache/yarn
+
+      - save_cache:
+          key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+      - run:
+          name: DB を待機
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: データベースをセットアップ
+          command: bin/rails db:schema:load --trace
+
+      - run:
+          name: RSpec を並列実行
+          command: bundle exec rspec
+
+      - store_test_results: # テストサマリー (https://circleci.com/docs/ja/2.0/collect-test-data/) に表示するテスト結果をアップロードします
+          path: test_results
+      # デプロイコンフィグの例については https://circleci.com/docs/ja/2.0/deployment-integrations/ を参照してください
