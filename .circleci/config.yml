@@ -3,7 +3,7 @@ jobs:
   build: # Workflows を使用しない実行では、エントリポイントとして `build` ジョブが必要
     parallelism: 3 # このジョブのインスタンスを 3つ並列実行します
     docker:
-      - image: circleci/ruby:2.6.6-node-browser
+      - image: circleci/ruby:2.6.6
         environment: # プライマリコンテナの環境変数
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
