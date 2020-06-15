@@ -7,10 +7,12 @@ jobs:
         environment: # プライマリコンテナの環境変数
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
-          BUNDLE_PATH: vendor/bundle
           BUNDLER_VERSION: 2.1.4
-          PGHOST: 127.0.0.1
           RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: 'root'
+          DB_PASSWORD: 'rootpass'
+
       - image: circleci/mysql:8.0.19
         environment:
           MYSQL_USER: root
