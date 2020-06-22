@@ -41,6 +41,8 @@ jobs:
           name: bundle install
           command: bundle install
 
+      - run: yarn install
+
       - save_cache:
           key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
