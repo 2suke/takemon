@@ -31,8 +31,8 @@ jobs:
 
       - restore_cache:
           keys:
-            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-            - rails-demo-bundle-v2-
+            - takemon-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+            - takemon-
 
       - run: rm config/database.yml
       - run: mv config/database.yml.ci config/database.yml
@@ -44,7 +44,7 @@ jobs:
       - run: yarn install
 
       - save_cache:
-          key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+          key: takemon-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
           paths:
             - vendor/bundle
 
