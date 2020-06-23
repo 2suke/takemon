@@ -8,7 +8,7 @@ RSpec.describe UserMailer, type: :mailer do
     it 'renders the headers' do
       expect(mail.subject).to eq('【takemon】アカウントを有効化しましょう')
       expect(mail.to).to eq([active_user.email])
-      expect(mail.from).to eq(['noreply@takemon.com'])
+      expect(mail.from).to eq(['noreply@takemon.work'])
     end
 
     it 'renders the body' do
@@ -25,7 +25,7 @@ RSpec.describe UserMailer, type: :mailer do
     it 'renders the headers' do
       expect(mail.subject).to eq('【takemon】パスワードをリセットします')
       expect(mail.to).to eq([active_user.email])
-      expect(mail.from).to eq(['noreply@takemon.com'])
+      expect(mail.from).to eq(['noreply@takemon.work'])
     end
 
     it 'renders the body' do
