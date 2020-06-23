@@ -1,63 +1,45 @@
 version: 2
+
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.6.6-node
+      - image: circleci/ruby:2.6.6
         environment:
           RAILS_ENV: test
           DB_USER: 2suke
-          DB_PASSWORD: password
+          DB_PASSWORD: passw0rd
           DB_HOST: 127.0.0.1
+          TZ: "Japan"
       - image: circleci/mysql:8.0
         command: --default-authentication-plugin=mysql_native_password
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_DATABASE: takemon_test
+          MYSQL_DATABASE: railsci_test
           MYSQL_HOST: 127.0.0.1
           MYSQL_ROOT_PASSWORD: ''
           MYSQL_USER: 2suke
-          MYSQL_PASSWORD: password
+          MYSQL_PASSWORD: passw0rd
           MYSQL_ROOT_HOST: '%'
         ports:
           - 3306:3306
-    working_directory: ~/takemon
+    working_directory: ~/repo
     steps:
       - checkout
       - run:
-          name: Install Bundler
+          name: update bundler
           command: |
             gem update --system
             gem install bundler
-
-      - restore_cache:
-          keys:
-            - takemon-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
-            - takemon-
-
-      - run: rm config/database.yml
-      - run: mv config/database.yml.ci config/database.yml
-
       - run:
           name: bundle install
           command: bundle install
-
-      - run: yarn install
-
-      - save_cache:
-          key: takemon-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
-          paths:
-            - vendor/bundle
-
       - run:
           name: wait DB connection
           command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
-
-      - run: rails db:create
-      - run: rails db:migrate
-
       - run:
-          name: RSpec
+          name: DB setup
+          command: rails db:create
+      - run: rails db:migrate
+      - run:
+          name: rspec
           command: bundle exec rspec
-
-      - store_test_results:
-          path: test_results
