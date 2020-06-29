@@ -1,6 +1,11 @@
 class User < ApplicationRecord
   has_many :portfolios, dependent: :destroy
   has_many :comments,   dependent: :destroy
+  has_many :favorites,  class_name: 'Favorite',
+                        foreign_key: 'fan_id',
+                        dependent: :destroy
+  has_many :bookmarks,  through: :favorites,
+                        source: :bookmark
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
   before_create :create_activation_digest
@@ -55,6 +60,18 @@ class User < ApplicationRecord
     self.reset_token = User.new_token
     update_attribute(:reset_digest, User.digest(reset_token))
     update_attribute(:reset_sent_at, Time.zone.now)
+  end
+
+  def add_bookmark(portfolio)
+    bookmarks << portfolio
+  end
+
+  def cancel_bookmark(portfolio)
+    favorites.find_by(bookmark_id: portfolio.id).destroy
+  end
+
+  def bookmarked?(portfolio)
+    bookmarks.include?(portfolio)
   end
 
   private

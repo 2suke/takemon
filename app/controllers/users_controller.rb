@@ -47,6 +47,11 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def favorite
+    @user = User.find(params[:id])
+    render 'favorites'
+  end
+
   private
 
   def user_params

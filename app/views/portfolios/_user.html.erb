@@ -4,5 +4,9 @@
     <%= link_to  '記事を編集する', edit_portfolio_path(@portfolio), class: 'btn btn-outline-success' %>
     <%= link_to  '記事を削除する', @portfolio, method: :delete, class: 'btn btn-outline-danger',
                                 data: { confirm: '削除した作品は復元できません。¥n本当に削除しますか？'} %>
-  <% end %>
+  <% else %>
+    <div id='favorite_form'>
+      <%= render 'favorites/favorite_form' %>
+    <% end %>
+  </div>
 </div>
