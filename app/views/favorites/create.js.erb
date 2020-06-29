@@ -1,1 +1,2 @@
-$("#favorite_form").html("<%= escape_javascript(render('favorites/rem_favorite')) %>");
+$('#favorite_form').html("<%= escape_javascript(render('favorites/rem_favorite')) %>");
+$('#fan_counter').html("この作品は<%= @portfolio.fans.count %>人のファンがいます");
