@@ -1,0 +1,5 @@
+  <%= form_with(model: current_user.favorites.build) do |f| %>
+    <%= hidden_field_tag(:fan_id, current_user.id) %>
+    <%= hidden_field_tag(:portfolio_id, @portfolio.id) %>
+    <%= f.submit 'お気に入り登録する', class: 'btn btn-outline-success' %>
+  <% end %>

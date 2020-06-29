@@ -1,0 +1,6 @@
+  <%= form_with(model: current_user.favorites.find_by(bookmark_id: @portfolio.id),
+                method: :delete) do |f| %>
+    <%= hidden_field_tag(:fan_id, current_user.id) %>
+    <%= hidden_field_tag(:portfolio_id, @portfolio.id) %>
+    <%= f.submit 'お気に入りを解除する', class: 'btn btn-outline-danger' %>
+  <% end %>

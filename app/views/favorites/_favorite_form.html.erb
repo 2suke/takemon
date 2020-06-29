@@ -1,0 +1,7 @@
+<% if current_user.bookmarked?(@portfolio) %>
+  <%= render 'favorites/rem_favorite' %>
+<% else %>
+  <%= render 'favorites/add_favorite' %>
+<% end %>
+
+

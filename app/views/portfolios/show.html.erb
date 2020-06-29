@@ -1,4 +1,4 @@
-<h1>ポートフォリオ詳細</h1>
+<h1><%= @portfolio.title %></h1>
 <div id='portdolioSlider' class='carousel slide'>
   <%= render 'portfolios/images' %>
 </div>
@@ -12,7 +12,8 @@
   <%= render  'portfolios/user' %>
   <div class='float-right'>
     <small class="text-muted"><%= @portfolio.created_at.to_s(:date_jp) %>に投稿</small><br>
-    <small class="text-muted"><%= @portfolio.updated_at.to_s(:date_jp) %>に最終更新</small>
+    <small class="text-muted"><%= @portfolio.updated_at.to_s(:date_jp) %>に最終更新</small><br>
+    <small class="text-muted" id='fan_counter'>この作品は<%= @portfolio.fans.count %>人のファンがいます</small>
   </div>
   <div class='clearfix'></div>
 </div>
