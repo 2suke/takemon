@@ -48,8 +48,8 @@ class UsersController < ApplicationController
   end
 
   def favorite
-    @user = User.find(params[:id])
-    render 'favorites'
+    user = User.find(params[:id])
+    @portfolios = user.bookmarks
   end
 
   private
