@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 module AuthenticationHelper
   def login(user)
     session[:user_id] = user
