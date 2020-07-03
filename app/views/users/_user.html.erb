@@ -1,0 +1,11 @@
+<tr>
+  <th><%= user.id %></th>
+  <tr><%= user.name %></tr>
+  <tr><%= link_to user.name, user %></tr>
+  <tr><%= user.email %></tr>
+  <tr><%= user.admin %></tr>
+  <% if current_user.admin? && !current_user?(user) %>
+  <%= link_to "delete", user, method: :delete,
+                              data: { confirm: "削除しますか？" } %>
+  <% end %>
+</tr>

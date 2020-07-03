@@ -1,10 +1,28 @@
 <p><%= @users.count %>人のユーザーが登録されています。</p>
-<ul>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>email</th>
+      <th>admin</th>
+      <% if current_user.admin? %>
+        <th>delete</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
     <% @users.each do |user| %>
-    <li>
-        <p>id: <%= user.id %></p>
-        <p>name: <%= user.name %></p>
-        <p>email: <%= user.email %></p>
-    </li>
+      <tr>
+        <th><%= user.id %></th>
+        <td><%= link_to user.name, user %></td>
+        <td><%= user.email %></td>
+        <td><%= user.admin %></td>
+        <% if current_user.admin? && !current_user?(user) %>
+        <td><%= link_to "delete", user, method: :delete,
+                                        data: { confirm: "削除しますか？" } %></td>
+        <% end %>
+      </tr>
     <% end %>
-</ul>
+  </tbody>
+</table>
