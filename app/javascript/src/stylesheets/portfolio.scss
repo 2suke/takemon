@@ -38,3 +38,8 @@
 .images_form, .image_append {
   @include compornent_distance;
 }
+
+.thumbnail {
+  background-color: gray;
+  object-fit: scale-down;
+}
