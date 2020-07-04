@@ -52,6 +52,6 @@ FactoryBot.define do
     factory :long_password_user,  traits: [:long_password]
     factory :active_user,         traits: [:active]
     factory :inactive_user,       traits: [:inactive]
-    factory :admin_user,          traits: [:admin]
+    factory :admin_user,          traits: %i[admin active]
   end
 end

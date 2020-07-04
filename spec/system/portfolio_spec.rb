@@ -34,7 +34,7 @@ feature 'Portfolio' do
     expect(page).to have_selector '.desc > p', text: new_portfolio.detail
   end
 
-  scenario 'Image Form' do
+  # scenario 'Image Form' do
   #   e2elogin active_user
 
   #   visit new_portfolio_path
