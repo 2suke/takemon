@@ -40,6 +40,10 @@ FactoryBot.define do
       activated { 'false' }
     end
 
+    trait :admin do
+      admin { true }
+    end
+
     factory :nameless_user,       traits: [:nameless]
     factory :long_name_user,      traits: [:long_name]
     factory :mailless_user,       traits: [:mailless]
@@ -48,5 +52,6 @@ FactoryBot.define do
     factory :long_password_user,  traits: [:long_password]
     factory :active_user,         traits: [:active]
     factory :inactive_user,       traits: [:inactive]
+    factory :admin_user,          traits: %i[admin active]
   end
 end
