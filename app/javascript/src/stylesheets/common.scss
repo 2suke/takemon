@@ -13,9 +13,10 @@
 
 body {
   min-height: 100vh;
-  background: image-url('white_back.png');
+  background: url('../../images/white_back.jpg');
   background-size: cover;
-  background-color: yellowgreen;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 header {
@@ -27,6 +28,9 @@ header {
     li {
       display: inline-block;
       margin-right: 20px;
+      .logo {
+        max-height: 40px;
+      }
     }
   }
 }
