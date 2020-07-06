@@ -12,15 +12,14 @@ class CommentsController < ApplicationController
     end
   end
 
-  def destroy
-  end
+  def destroy; end
 
   private
 
   def comment_params
     params.require(:comment).delete :to_portfolio
     params.require(:comment).delete :to_comment
-    return params.require(:comment).permit(:message)
+    params.require(:comment).permit(:message)
   end
 
   def save_portfolio_comment

@@ -63,14 +63,14 @@ class PortfoliosController < ApplicationController
 
   def check_portfolio_owner
     portfolio = Portfolio.find(params[:id])
-    unless current_user == portfolio.user
-      log_out
-      store_location
-      flash[:danger] = "以下のいずれかの問題が検出されました¥n
-                        ・他のユーザーの作品を編集しようとしている¥n
-                        ・ログイン情報が失効している¥n
-                        お鐵数ですが、再度ログインしてから削除操作を実行してください。"
-      redirect_to login_url
-    end
+    return if current_user == portfolio.user
+
+    log_out
+    store_location
+    flash[:danger] = "以下のいずれかの問題が検出されました¥n
+                      ・他のユーザーの作品を編集しようとしている¥n
+                      ・ログイン情報が失効している¥n
+                      お鐵数ですが、再度ログインしてから削除操作を実行してください。"
+    redirect_to login_url
   end
 end

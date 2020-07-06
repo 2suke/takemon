@@ -20,11 +20,11 @@ FactoryBot.define do
     # For unit test
     # It uses not numbered file path
     trait :for_ut do
-      SAMPLE_PATH = 'spec/factories/slide_test/number_0.png'
-      image {
+      SAMPLE_PATH = 'spec/factories/slide_test/number_0.png'.freeze
+      image do
         Rack::Test::UploadedFile.new(File.join(Rails.root, SAMPLE_PATH),
                                      'image/png')
-      }
+      end
     end
 
     factory :valid_image,     traits: %i[attached for_ut]

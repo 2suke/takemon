@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Sessions' do
   let(:active_user) { create(:active_user) }
-  let(:inactive_user) { create(:inactive_user)}
+  let(:inactive_user) { create(:inactive_user) }
 
   scenario 'active user sign in/out' do
     visit '/login'
