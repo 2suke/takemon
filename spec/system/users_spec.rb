@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Users' do
-  let(:valid_user)  { build(:valid_user) }
+  let(:valid_user)   { build(:valid_user) }
   let!(:common_user) { create(:active_user) }
   let!(:admin_user)  { create(:admin_user) }
 
@@ -21,7 +21,6 @@ feature 'Users' do
     e2elogin common_user
 
     visit users_path
-
     expect(page).to_not have_content 'delete'
     expect(page).to_not have_link    'delete'
   end
@@ -30,7 +29,6 @@ feature 'Users' do
     e2elogin admin_user
 
     visit '/users'
-
     expect(page).to have_content 'delete'
     expect(page).to have_link    'delete'
 

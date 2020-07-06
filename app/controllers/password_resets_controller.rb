@@ -1,10 +1,7 @@
 class PasswordResetsController < ApplicationController
-  before_action :get_user, only: %i[edit update]
+  before_action :search_missing_user, only: %i[edit update]
   before_action :valid_user, only: %i[edit update]
   before_action :check_expiration, only: %i[edit update]
-
-  def new
-  end
 
   def create
     @user = User.find_by(email: params[:password_reset][:email].downcase)
@@ -17,9 +14,6 @@ class PasswordResetsController < ApplicationController
       flash[:danger] = '入力したメールアドレスが見つかりませんでした。メールアドレスを入力し直してください。'
       render 'new'
     end
-  end
-
-  def edit
   end
 
   def update
@@ -42,20 +36,18 @@ class PasswordResetsController < ApplicationController
     params.require(:user).permit(:password, :password_confirmation)
   end
 
-  def get_user
+  def search_missing_user
     @user = User.find_by(email: params[:email])
   end
 
   def valid_user
-    unless (@user && @user.activated? && @user.authenticated?(:reset, params[:id]))
-      redirect_to root_url
-    end
+    redirect_to root_url unless @user&.activated? && @user&.authenticated?(:reset, params[:id])
   end
 
   def check_expiration
-    if @user.password_reset_expired?
-      flash[:danger] = 'パスワード再設定の有効期限が切れています。再度パスワードリセットの手続きを行ってください。'
-      redirect_to new_password_reset_url
-    end
+    return unless @user.password_reset_expired?
+
+    flash[:danger] = 'パスワード再設定の有効期限が切れています。再度パスワードリセットの手続きを行ってください。'
+    redirect_to new_password_reset_url
   end
 end
