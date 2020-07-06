@@ -9,7 +9,11 @@
 }
 
 .content{
-  form{
+  .centor > :not(.portfolio_list) {
+    background-color: white;
+  }
+
+  form {
     input, textarea, select, .uneditable-input {
       border: 1px solid #b0b0b0;
       width: 100%;
