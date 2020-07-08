@@ -9,7 +9,7 @@ RSpec.describe FavoritesController, type: :controller do
       it 'add a portfolio' do
         expect do
           login valid_user
-          post :create, params: { portfolio_id: saved_portfolio.id }
+          post :create, params: { id: saved_portfolio.id }
         end.to change(Favorite, :count).by(1)
       end
     end
@@ -19,7 +19,7 @@ RSpec.describe FavoritesController, type: :controller do
     it 'destroy a portfolio' do
       login saved_portfolio.user
       expect do
-        delete :destroy, params: { portfolio_id: saved_portfolio }
+        delete :destroy, params: { id: saved_portfolio.id }
       end.to change(Favorite, :count).by(-1)
     end
   end
