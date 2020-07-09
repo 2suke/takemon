@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
   def create
-    @portfolio = Portfolio.find(params[:id])
+    @portfolio = Portfolio.find(params[:portfolio_id])
     current_user.add_bookmark(@portfolio)
     respond_to do |format|
       format.html { redirect_to @portfolio }
