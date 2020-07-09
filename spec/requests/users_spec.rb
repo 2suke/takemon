@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   let(:saved_user) { create(:valid_user) }
+  let(:admin_user) { create(:admin_user) }
 
   describe 'GET#show' do
     it 'assigns valid user' do
@@ -43,6 +44,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe 'DELETE#destroy' do
     it 'decrement user count' do
+      login admin_user
       saved_user.save
       expect do
         delete :destroy, params: { id: saved_user }

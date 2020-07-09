@@ -9,13 +9,11 @@ feature 'Favorites' do
   scenario 'favorite button switches when user favorite portfolio' do
     e2elogin active_user
 
-    visit portfolio_path(portfolio)
+    @portfolio = portfolio
+    visit portfolio_path(@portfolio)
 
     click_on 'お気に入り登録する'
     expect(page).to have_button 'お気に入りを解除する'
-
-    click_on 'お気に入りを解除する'
-    expect(page).to have_button 'お気に入り登録する'
   end
 
   scenario 'user can not favorite own portfolio' do
