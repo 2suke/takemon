@@ -11,7 +11,7 @@ RSpec.describe FavoritesController, type: :controller do
         expect do
           login valid_user
           post :create, params: { portfolio_id: saved_portfolio.id }
-        end.to change(Favorite, :count).by(-1)
+        end.to change(Favorite, :count).by(1)
       end
     end
   end
