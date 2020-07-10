@@ -1,24 +1,41 @@
-# README
+# TAKEMON概要
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+作品記事投稿用SNSです。  
+Twitterで一昔前に流行った「バズったので宣伝」が好きだったので専用のSNSがあればと思い作成しました。  
+https://www.takemon.work/
 
-Things you may want to cover:
+<トップページ画面>
+![トップページ画像](readme/topmenu.jpg)
 
-* Ruby version
+<作品詳細画面>
+![ポートフォリオ詳細ページ画像](readme/viewer.png)
 
-* System dependencies
+# 機能一覧
 
-* Configuration
+- ログイン/ログアウト機能
+- ログイン保持機能
+- ユーザー登録/更新/削除機能
+- 作品記事投稿/編集/削除機能
+- お気に入り機能
+- 単体/結合/E2Eテスト自動化
 
-* Database creation
+# 使用技術
 
-* Database initialization
+### アプリケーション
 
-* How to run the test suite
+- Ruby v2.6.6
+- Ruby on Rails v6.0
+- BootStrap v4.3
+- jQuery
+- MySQL 8.0
 
-* Services (job queues, cache servers, search engines, etc.)
+### インフラ
 
-* Deployment instructions
+- AWS（使用しているサービスについてはインフラ構成図参照）
+- Docker-Compose（ローカル開発環境）
+- CircleCI（自動ビルド・自動テスト）
 
-* ...
+# インフラ構成図
+
+<インフラ構成図>
+![インフラ構成図](readme/infra.png)
