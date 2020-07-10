@@ -1,0 +1,4 @@
+# 応急処置
+# bootstrapをassetsで読み込めるようにすること
+stylesheets/pack
+!.gitkeep
