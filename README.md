@@ -4,8 +4,8 @@
 Twitterで一昔前に流行った「バズったので宣伝」が好きだったので専用のSNSがあればと思い作成しました。  
 https://www.takemon.work/
 
-<トップページ画像>  
-<ポートフォリオ詳細ページ画像>  
+![トップページ画像](https://github.com/2suke/takemon/readme/topmenu.jpg)    
+![ポートフォリオ詳細ページ画像]  
 
 # 機能一覧
 
