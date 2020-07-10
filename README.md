@@ -4,8 +4,11 @@
 Twitterで一昔前に流行った「バズったので宣伝」が好きだったので専用のSNSがあればと思い作成しました。  
 https://www.takemon.work/
 
-<トップページ画像>  
-<ポートフォリオ詳細ページ画像>  
+<トップページ画面>
+![トップページ画像](readme/topmenu.jpg)
+
+<作品詳細画面>
+![ポートフォリオ詳細ページ画像](readme/viewer.png)
 
 # 機能一覧
 
@@ -22,9 +25,9 @@ https://www.takemon.work/
 
 - Ruby v2.6.6
 - Ruby on Rails v6.0
-- BootStrap4
+- BootStrap v4.3
 - jQuery
-- MySQL
+- MySQL 8.0
 
 ### インフラ
 
@@ -35,3 +38,4 @@ https://www.takemon.work/
 # インフラ構成図
 
 <インフラ構成図>
+![インフラ構成図](readme/infra.png)

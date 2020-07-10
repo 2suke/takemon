@@ -1,9 +1,7 @@
 FactoryBot.define do
   factory :valid_favorite, class: Favorite do
-    association :portfolio, factory: :valid_portfolio
-    association :user, factory: :valid_user
-    bookmark_id { portfolio.id }
-    fan_id { user.id }
+    association :bookmark, factory: :valid_portfolio
+    association :fan, factory: :valid_user
 
     trait :portfolio_less do
       bookmark {}
