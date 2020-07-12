@@ -1,1 +1,1 @@
-load(Rails.root.join('db', 'seeds', "develop.rb"))
+load(Rails.root.join('db', 'seeds', "development.rb"))

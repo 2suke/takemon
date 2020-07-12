@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'Sessions' do
   let(:active_user) { create(:active_user) }
   let(:inactive_user) { create(:inactive_user) }
+  let!(:guest_user) { create(:guest_user) }
 
   scenario 'active user sign in/out' do
     visit '/login'
@@ -26,5 +27,12 @@ feature 'Sessions' do
     click_on 'commit'
 
     expect(page).to have_content 'アカウントは現在有効ではありません。'
+  end
+
+  scenario 'guest user login' do
+    visit '/'
+    click_on 'ゲストユーザーでログイン'
+
+    expect(page).to have_content 'ゲストユーザー'
   end
 end

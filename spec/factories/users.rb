@@ -54,4 +54,14 @@ FactoryBot.define do
     factory :inactive_user,       traits: [:inactive]
     factory :admin_user,          traits: %i[admin active]
   end
+
+  factory :guest_user, class: User do
+    name { 'ゲストユーザー' }
+    email { 'guest@takemon.org' }
+    password { 'takemon' }
+    password_confirmation { 'takemon' }
+    activated { true }
+    activated_at { Time.zone.now }
+    guest { true }
+  end
 end
