@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   get    'password_resets/new'
   get    'password_resets/edit'
   root   'static_page#home'
-  get    'login', to: 'sessions#new'
-  post   'login', to: 'sessions#create'
-  delete 'login', to: 'sessions#destroy'
+  get    'login',       to: 'sessions#new'
+  post   'login',       to: 'sessions#create'
+  delete 'login',       to: 'sessions#destroy'
+  get    'login/guest', to: 'sessions#guest'
   resources :users do
     member do
       get :favorite

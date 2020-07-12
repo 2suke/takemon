@@ -28,7 +28,8 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="application-menu">
                         <%= link_to  "ログイン", login_path, class: 'dropdown-item' %>
-                        <%= link_to  "アカウントを作成する", new_user_path, class: 'dropdown-item'  %>
+                        <%= link_to  "ゲストユーザーでログイン", login_guest_path, class: 'dropdown-item' %>
+                        <%= link_to  "アカウントを作成する", new_user_path, class: 'dropdown-item' %>
                     </div>
                 </li>
                 <% end %>

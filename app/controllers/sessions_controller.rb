@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user&.authenticate(params[:session][:password])
       if user.activated?
-        invate_active_user(user)
+        invite_active_user(user)
       else
         reject_noob_user
       end
@@ -13,6 +13,12 @@ class SessionsController < ApplicationController
     end
   end
 
+  def guest
+    user = User.find_by(email: 'guest@takemon.org')
+    log_in user
+    redirect_back_or user
+  end
+
   def destroy
     log_out
     redirect_to root_url
@@ -20,7 +26,7 @@ class SessionsController < ApplicationController
 
   private
 
-  def invate_active_user(user)
+  def invite_active_user(user)
     log_in user
     params[:session][:remember_me] == '1' ? remember(user) : forget(user)
     redirect_back_or user
