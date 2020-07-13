@@ -8,6 +8,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap', '~> 4.3.1'
 gem 'carrierwave', '1.2.2'
 gem 'faker', '1.7.3'
+gem 'fog-aws'
 gem 'font-awesome-sass'
 gem 'jbuilder', '~> 2.7'
 gem 'jquery-rails'
