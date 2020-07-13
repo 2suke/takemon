@@ -37,12 +37,3 @@ User.create!(
   activated: true,
   activated_at: Time.zone.now,
 )
-
-User.create!(
-  name: '井之頭 吾郎 (demo)',
-  email: 'lonely-gourmet@takemon.demo',
-  password: 'takemon',
-  password_confirmation: 'takemon',
-  activated: true,
-  activated_at: Time.zone.now,
-)
