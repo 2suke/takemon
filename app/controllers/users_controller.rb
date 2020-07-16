@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @portfolios = @user.portfolios.all
+    @portfolios = @user.portfolios.all.page(params[:page]).per(6)
   end
 
   def index
