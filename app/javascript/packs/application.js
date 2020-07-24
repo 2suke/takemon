@@ -8,7 +8,9 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
+require("packs/jquery.jscroll.min.js")
 require("packs/portfolio_form.js")
+require("packs/infinite_scroll.js")
 require("packs/avatar_preview.js")
 
 // Uncomment to copy all static images under ../images to the output folder and reference
