@@ -1,0 +1,32 @@
+input.icon-form {
+  display: none;
+}
+
+.avatar {
+  width: 128px;
+  height: 128px;
+
+  img {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+  }
+
+  .edit-label {
+    position: relative;
+    top: -80px;
+    left: 32px;
+    margin: 0px;
+    color: #ffffff;
+    visibility: hidden;
+  }
+
+  &:hover {
+    img {
+      background-color: rgba(0,0,0,0.6);
+    }
+    .edit-label {
+      visibility: visible;
+    }
+  }
+}
