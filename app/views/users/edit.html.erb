@@ -4,7 +4,26 @@
 
 <%= render 'shared/error_messages', object: @user %>
 
-<%= render  'users/core_info', object: form %>
+<label class='avatar' >
+  <% if @user.icon? then %>
+    <%= image_tag @user.icon.url, id: 'avatar-preview' %>
+  <% else %>
+    <%= image_tag "anyone_icon.png", id: 'avatar-preview' %>
+  <% end %>
+
+  <%= form.file_field :icon, class: 'icon-form', id: 'avatar-form' %>
+  <label class='edit-label'>変更する</label>
+</label>
+<div class='clearfix'></div>
+
+<%= form.label :name, "ユーザ名" %>
+<%= form.text_field :name, class: 'form-control' %>
+<%= form.label :email, "メールアドレス" %>
+<%= form.email_field :email, class: 'form-control' %>
+<%= form.label :url, "関連URL" %>
+<%= form.text_field :url, class: 'form-control' %>
+<%= form.label :bio, "自己紹介" %>
+<%= form.text_area :bio, class: 'form-control' %>
 
 <%= form.submit 'アカウント情報更新', class:"btn btn-primary" %>
 
