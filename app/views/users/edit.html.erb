@@ -4,13 +4,12 @@
 
 <%= render 'shared/error_messages', object: @user %>
 
-<label class='avatar' >
+<label class='avatar-edit' >
   <% if @user.icon? then %>
     <%= image_tag @user.icon.url, id: 'avatar-preview' %>
   <% else %>
-    <%= image_tag "anyone_icon.png", id: 'avatar-preview' %>
+    <%= image_tag 'anyone_icon.png', id: 'avatar-preview' %>
   <% end %>
-
   <%= form.file_field :icon, class: 'icon-form', id: 'avatar-form' %>
   <label class='edit-label'>変更する</label>
 </label>

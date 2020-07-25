@@ -1,8 +1,10 @@
 <h1>show action</h1>
 
-<p>id: <%= @user.id %></p>
-<p>name: <%= @user.name %></p>
+<%= user_avatar user: @user, clazz: 'avatar' %>
+<p>name:  <%= @user.name %></p>
 <p>email: <%= @user.email %></p>
+<p>url:   <%= link_to @user.url, "#{@user.url}" if @user.url? %></p>
+<%= simple_format(@user.bio) if @user.bio? %>
 
 <h2>投稿した作品</h2>
 <%= render  "shared/portfolio_list" %>

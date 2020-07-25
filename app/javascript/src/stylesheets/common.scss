@@ -21,7 +21,7 @@ body {
 
 header {
   background-color: #202020;
-  color: #ffffff;
+  color: white;
   @include compornent_distance;
   ul {
     display: inline;
@@ -37,7 +37,11 @@ header {
 
 footer {
   background-color: #b0b0b0;
-  color: #000000;
+  color: black;
+}
+
+.avatar {
+  border-radius: 50%;
 }
 
 ul.scroll-content {
