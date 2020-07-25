@@ -45,3 +45,35 @@
     max-height: 30%;
   }
 }
+
+img.card-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.author-content {
+  float: left;
+}
+
+.card-body {
+  .avatar {
+    width: 48px;
+    height: 48px;
+    margin-right: 10px;
+  }
+  .card-title {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: large;
+    color: black;
+  }
+}
+
+.card-footer {
+  >.btn{
+    position: absolute;
+    right: 20px;
+    bottom: 12px;
+  }
+}

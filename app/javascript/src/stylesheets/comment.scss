@@ -1,10 +1,20 @@
 .base-comment {
   font-size: larger;
 }
+
 .comment {
-  padding-top:  10px;
+  padding-top: 10px;
   padding-left: 20px;
-  border-top: dashed 1px #505050;
+  .avatar {
+    width: 10%;
+  }
+  .comment-scrap {
+    width: 90%;
+  }
+}
+
+.comment-body{
+  clear: both;
 }
 
 .cancel-button {
@@ -13,13 +23,16 @@
 
 .commented-at {
   padding-top: 5px;
+  margin-right: 20px;
 }
 
 .anchor{
   color: blue;
   margin-bottom: 0px;
 }
-
+.icons {
+  margin-left: -5%;
+}
 .icon {
   a {
     color: black;

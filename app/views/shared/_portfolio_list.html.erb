@@ -4,14 +4,18 @@
     <li class='col-md-6'>
       <div class='card'>
         <% if portfolio.images.first.image.url.nil? %>
-          <%= image_tag 'gray_noimage.png', class: 'img-fluid', width: '418px', height: '418px' %>
+          <%= link_to image_tag('gray_noimage.png', class: 'img-fluid', width: '418px', height: '418px'), portfolio_path(portfolio) %>
         <% else %>
-          <%= image_tag portfolio.images.first.image.url, class: 'img-fluid thumbnail', width: '418px', height: '418px' %>
+          <%= link_to image_tag(portfolio.images.first.image.url, class: 'img-fluid thumbnail', width: '418px', height: '418px'),
+                      portfolio_path(portfolio) %>
         <% end %>
 
         <div class="card-body">
-          <h5 class="card-title"><%= portfolio.title %></h5>
-          <p class="card-text"><%= portfolio.user.name %>の作品</p>
+          <%= user_avatar user: portfolio.user, clazz: 'avatar author-content' %>
+          <div class='author-content'>
+            <%= link_to "#{portfolio.title}", portfolio_path(portfolio), class: 'card-title' %><br>
+            <%= link_to "#{portfolio.user.name}の作品", portfolio.user, class: 'card-text text-muted' %>
+          </div>
         </div>
 
         <div class='card-footer'>
