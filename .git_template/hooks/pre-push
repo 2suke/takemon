@@ -1,8 +1,15 @@
 #!/bin/bash
-while read local_ref local_sha1 remote_ref remote_sha1
+while read local_ref remote_ref
 do
-  echo $local_ref
-  echo $remote_ref
+  if [[ "${remote_ref##refs/heads/}" = $MASTER ]]; then
+    echo '[danger] remote is master you know!?'
+    exec < /dev/tty
+    case $answer in
+        'y' | 'yes') echo '[info] OK. Check local and remote branch name.';;
+        * ) echo '[error] push failed.';exit 1;;
+    esac
+    read answer
+  fi
   if [[ $local_ref = $remote_ref ]]; then
     echo '[warn] push to remote, continue? [y/N]'
     exec < /dev/tty
@@ -15,7 +22,7 @@ do
   else
     echo "$remote_ref is different from current branch."
     echo "Switch branch and Check git diff."
-    exit 0
+    exit 1
   fi
 done
 
