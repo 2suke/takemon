@@ -22,7 +22,7 @@ do
   else
     echo "$remote_ref is different from current branch."
     echo "Switch branch and Check git diff."
-    exit 1
   fi
+  exit 1
 done
 
