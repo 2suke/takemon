@@ -44,5 +44,3 @@ https://www.takemon.work/
 ![インフラ構成図](readme/infra.png)
 
 
-
-# git hook test
