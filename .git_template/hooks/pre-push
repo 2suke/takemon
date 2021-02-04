@@ -1,14 +1,21 @@
-sh の中身
-
 #!/bin/bash
+while read local_ref local_sha1 remote_ref remote_sha1
+do
+  echo $local_ref
+  echo $remote_ref
+  if [[ $local_ref = $remote_ref ]]; then
+    echo '[warn] push to remote, continue? [y/N]'
+    exec < /dev/tty
+    read answer
+    case $answer in
+        'y' | 'yes') echo '[info] OK. push start.';;
+        * ) echo '[error] push failed.';exit 1;;
+    esac
+    exit 0
+  else
+    echo "$remote_ref is different from current branch."
+    echo "Switch branch and Check git diff."
+    exit 0
+  fi
+done
 
-echo '[warn] push to remote, continue? [y/N]'
-
-exec < /dev/tty
-read answer
-
-case $answer in
-    'y' | 'yes') echo '[info] OK. push start.';;
-    * ) echo '[error] push failed.';exit 1;;
-esac
-exit 0
