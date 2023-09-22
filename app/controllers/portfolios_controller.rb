@@ -70,7 +70,7 @@ class PortfoliosController < ApplicationController
     flash[:danger] = "以下のいずれかの問題が検出されました¥n
                       ・他のユーザーの作品を編集しようとしている¥n
                       ・ログイン情報が失効している¥n
-                      お鐵数ですが、再度ログインしてから削除操作を実行してください。"
+                      お手数ですが、再度ログインしてから削除操作を実行してください。"
     redirect_to login_url
   end
 end

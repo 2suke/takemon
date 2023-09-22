@@ -3,7 +3,7 @@
 <%= user_avatar user: @user, clazz: 'avatar' %>
 <p>name:  <%= @user.name %></p>
 <p>email: <%= @user.email %></p>
-<p>url:   <%= link_to @user.url, "#{@user.url}" if @user.url? %></p>
+<p>url:   <%= link_to @user.url, "#{@user.url}" if !@user.url.nil? %></p>
 <%= simple_format(@user.bio) if @user.bio? %>
 
 <h2>投稿した作品</h2>
